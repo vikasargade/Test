@@ -74,33 +74,17 @@ public class ServiceImple implements  Service{
 
     @Override
     public boolean placeOrder(Order ord) {
-
-            String inserProcedure = "{call insertUser(?)}";
             String placeOrderProcedure = "{call placeOrder(?,?,?)}";
 
             try {
-                CallableStatement cstmt = conn.prepareCall(inserProcedure);
-                cstmt.setInt(1,ord.getOrderId());
-                cstmt.execute();
+                CallableStatement cstmt = conn.prepareCall(placeOrderProcedure);
 
-                ResultSet rs = cstmt.getResultSet();
-                int ordId = 0;
 
-                while (rs.next())
-                {
-                    ordId=rs.getInt(1);
-                }
-
-                cstmt = conn.prepareCall(placeOrderProcedure);
-
-                for(Product p :ord.getProductList())
-                {
-                    cstmt.setInt(1, ordId);
-                    cstmt.setString(2, p.getpName() );
-                    cstmt.setInt(3 , p.getpQty());
+                    cstmt.setInt(1, ord.getOrderId());
+                    cstmt.setString(2, ord.getProductName());
+                    cstmt.setInt(3 , ord.getProductQty());
                     cstmt.execute();
 
-                }
             } catch (SQLException e) {
                 System.out.println(e);
             }

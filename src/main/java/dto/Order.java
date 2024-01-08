@@ -7,7 +7,12 @@ import java.util.List;
 public class Order {
 
     private int orderId;
-    private String customerName;
+    private String productName;
+
+    public String getProductName() {
+        return productName;
+    }
+
     private int ProductId;
     private int productQty;
     private double total;
@@ -16,22 +21,22 @@ public class Order {
     public Order() {
     }
 
-    public Order(String customerName, int productId, int productQty, double total) {
-        this.customerName = customerName;
+    public Order(String productName, int productId, int productQty, double total) {
+        this.productName = productName;
         ProductId = productId;
         this.productQty = productQty;
         this.total = total;
     }
 
-    public Order(String customerName, int productId, int productQty) {
-        this.customerName = customerName;
+    public Order(String productName, int productId, int productQty) {
+        this.productName = productName;
         ProductId = productId;
         this.productQty = productQty;
     }
 
-    public Order(int orderId, String customerName, int productId, int productQty, double total) {
+    public Order(int orderId, String productName, int productId, int productQty, double total) {
         this.orderId = orderId;
-        this.customerName = customerName;
+        this.productName = productName;
         ProductId = productId;
         this.productQty = productQty;
         this.total = total;
@@ -43,14 +48,6 @@ public class Order {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
     }
 
     public int getProductId() {
