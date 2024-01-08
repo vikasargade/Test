@@ -1,16 +1,41 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Order {
+
     private int orderId;
-    private double totalAmt ;
-    List<Product> productList = new LinkedList<>();
+    private String customerName;
+    private int ProductId;
+    private int productQty;
+    private double total;
+    List<Product> productList = new ArrayList<>();
 
     public Order() {
     }
 
+    public Order(String customerName, int productId, int productQty, double total) {
+        this.customerName = customerName;
+        ProductId = productId;
+        this.productQty = productQty;
+        this.total = total;
+    }
+
+    public Order(String customerName, int productId, int productQty) {
+        this.customerName = customerName;
+        ProductId = productId;
+        this.productQty = productQty;
+    }
+
+    public Order(int orderId, String customerName, int productId, int productQty, double total) {
+        this.orderId = orderId;
+        this.customerName = customerName;
+        ProductId = productId;
+        this.productQty = productQty;
+        this.total = total;
+    }
 
     public int getOrderId() {
         return orderId;
@@ -20,18 +45,37 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public double getTotalAmt() {
-        return totalAmt;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setTotalAmt(double totalAmt) {
-        this.totalAmt = totalAmt;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public List<Product> getProductList() {
-        return productList;
+    public int getProductId() {
+        return ProductId;
     }
 
+    public void setProductId(int productId) {
+        ProductId = productId;
+    }
+
+    public int getProductQty() {
+        return productQty;
+    }
+
+    public void setProductQty(int productQty) {
+        this.productQty = productQty;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
     public void addProduct(Product product) {
         productList.add(product);
     }
